@@ -311,6 +311,11 @@ MINIPLUGIN_FILES += Fundamental/src/VCO.cpp
 FUNDAMENTAL_CUSTOM = $(DRWAV)
 
 # --------------------------------------------------------------
+# GrandeModular
+
+GRANDEMODULAR_CUSTOM = Push
+
+# --------------------------------------------------------------
 # ZamAudio (always enabled) - TODO
 
 # PLUGIN_FILES += $(wildcard ZamAudio/src/*.cpp)
@@ -633,7 +638,7 @@ MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/multimode.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/resample.cpp
 
 # modules/types which are present in other plugins
-BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF Mix4
+BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF Mix4 Mult
 BOGAUDIO_CUSTOM_PER_FILE = ARQuantity AttackMenuItem ReleaseMenuItem
 
 # --------------------------------------------------------------
