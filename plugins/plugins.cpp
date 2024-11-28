@@ -427,7 +427,9 @@ void saveGtgPluginDefault(const char*, int) {}
 #include "GoodSheperd/src/plugin.hpp"
 
 // GrandeModular
+#define modelPush modelGrandeModularPush
 #include "GrandeModular/src/plugin.hpp"
+#undef modelPush
 
 // H4N4 Modules
 #include "h4n4-modules/src/plugin.hpp"
@@ -1185,6 +1187,7 @@ static void initStatic__Fundamental()
         p->addModel(modelPulses);
         p->addModel(modelQuantizer);
         p->addModel(modelRandom);
+        p->addModel(modelCVMix);
         p->addModel(modelScope);
         p->addModel(modelSEQ3);
         p->addModel(modelSequentialSwitch1);
@@ -1197,6 +1200,18 @@ static void initStatic__Fundamental()
         p->addModel(modelVCMixer);
         p->addModel(modelVCO);
         p->addModel(modelVCO2);
+        p->addModel(modelCompare);
+        p->addModel(modelFade);
+        p->addModel(modelGates);
+        p->addModel(modelLogic);
+        p->addModel(modelMult);
+        p->addModel(modelProcess);
+        p->addModel(modelPush);
+        p->addModel(modelRandomValues);
+        p->addModel(modelRescale);
+        p->addModel(modelSHASR);
+        p->addModel(modelUnity);
+        p->addModel(modelViz);
     }
 }
 
@@ -2305,7 +2320,9 @@ static void initStatic__GrandeModular()
         p->addModel(modelPeak);
         p->addModel(modelPolyMergeResplit);
         p->addModel(modelPolySplit);
+#define modelPush modelGrandeModularPush
         p->addModel(modelPush);
+#undef modelPush
         p->addModel(modelQuant);
         p->addModel(modelQuantIntervals);
         p->addModel(modelQuantMT);

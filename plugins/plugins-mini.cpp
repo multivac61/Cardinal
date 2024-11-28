@@ -269,10 +269,23 @@ static void initStatic__Fundamental()
         spl.removeModule("Octave");
         spl.removeModule("Pulses");
         spl.removeModule("SEQ3");
+        spl.removeModule("CVMix");
         spl.removeModule("SequentialSwitch1");
         spl.removeModule("SequentialSwitch2");
         spl.removeModule("VCA");
         spl.removeModule("VCO2");
+        spl.removeModule("Compare");
+        spl.removeModule("Fade");
+        spl.removeModule("Gates");
+        spl.removeModule("Logic");
+        spl.removeModule("Mult");
+        spl.removeModule("Process");
+        spl.removeModule("Push");
+        spl.removeModule("RandomValues");
+        spl.removeModule("Rescale");
+        spl.removeModule("SHASR");
+        spl.removeModule("Unity");
+        spl.removeModule("Viz");
     }
 }
 
@@ -280,7 +293,7 @@ static void initStatic__Aria()
 {
     Plugin* const p = new Plugin;
     pluginInstance__Aria = p;
-
+;
     const StaticPluginLoader spl(p, "AriaModules");
     if (spl.ok())
     {
