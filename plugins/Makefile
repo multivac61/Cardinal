@@ -633,7 +633,7 @@ MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/multimode.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/resample.cpp
 
 # modules/types which are present in other plugins
-BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF
+BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF Mix4
 BOGAUDIO_CUSTOM_PER_FILE = ARQuantity AttackMenuItem ReleaseMenuItem
 
 # --------------------------------------------------------------
@@ -1309,6 +1309,12 @@ PLUGIN_BINARIES += ValleyAudio/src/XFADE.bin
 # modules/types which are present in other plugins
 VALLEYAUDIO_CUSTOM = $(DRWAV) Chord DigitalDisplay
 VALLEYAUDIO_CUSTOM_PER_FILE = TempoKnob
+
+# --------------------------------------------------------------
+# Venom
+PLUGIN_FILES += $(filter-out Venom/src/plugin.cpp Venom/src/MousePad.cpp,$(wildcard Venom/src/*.cpp))
+
+VENOM_CUSTOM = Bypass Logic DigitalDisplay YellowRedLight
 
 # --------------------------------------------------------------
 # Voxglitch
@@ -2819,6 +2825,13 @@ $(BUILD_DIR)/ValleyAudio/%.cpp.o: ValleyAudio/%.cpp
 		-IValleyAudio/src \
 		-Wno-sign-compare \
 		-Wno-unused-but-set-variable
+
+$(BUILD_DIR)/Venom/%.cpp.o: Venom/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(VENOM_CUSTOM),$(call custom_module_names,$(m),Venom)) \
+		-DpluginInstance=pluginInstance__Venom 
 
 $(BUILD_DIR)/voxglitch/%.cpp.o: voxglitch/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

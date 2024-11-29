@@ -201,6 +201,7 @@ extern Model* modelBlank;
 #define modelVCA modelBogaudioVCA
 #define modelVCF modelBogaudioVCF
 #define modelVCO modelBogaudioVCO
+#define modelMix4 modelBogaudioMix4
 extern Model* modelVCO;
 extern Model* modelLVCO;
 extern Model* modelSine;
@@ -331,6 +332,7 @@ extern Model* modelTestVCF;
 #undef modelVCA
 #undef modelVCF
 #undef modelVCO
+#undef modelMix4
 
 // CatroModulo
 #include "CatroModulo/src/CatroModulo.hpp"
@@ -874,6 +876,25 @@ void surgext_rack_update_theme();
 // ValleyAudio
 #include "ValleyAudio/src/Valley.hpp"
 
+// Venom
+#define modelBypass modelVenomBypass
+#define modelLogic modelVenomLogic
+#define YellowRedLight VenomYellowRedLight
+#define YellowBlueLight VenomYellowBlueLight
+#define DigitalDisplay VenomDigitalDisplay
+#include "Venom/src/plugin.hpp"
+#undef DigitalDisplay
+#undef YellowRedLight
+#undef YellowBlueLight
+#undef modelBypass
+#undef modelLogic
+
+// TODO: Figure out a a better way to define these
+int getDefaultTheme(){ return 0; }
+int getDefaultDarkTheme(){ return 1; }
+void setDefaultTheme(int){  }
+void setDefaultDarkTheme(int){  }
+
 // Voxglitch
 #define modelLooper modelVoxglitchLooper
 #include "voxglitch/src/plugin.hpp"
@@ -989,6 +1010,7 @@ extern Plugin* pluginInstance__stoermelder_p1;
 Plugin* pluginInstance__surgext;
 Plugin* pluginInstance__unless_modules;
 Plugin* pluginInstance__ValleyAudio;
+Plugin* pluginInstance__Venom;
 Plugin* pluginInstance__Voxglitch;
 Plugin* pluginInstance__WhatTheRack;
 Plugin* pluginInstance__ZetaCarinaeModules;
@@ -1757,6 +1779,7 @@ static void initStatic__BogaudioModules()
 #define modelVCA modelBogaudioVCA
 #define modelVCF modelBogaudioVCF
 #define modelVCO modelBogaudioVCO
+#define modelMix4 modelBogaudioMix4
         p->addModel(modelVCO);
         p->addModel(modelLVCO);
         p->addModel(modelSine);
@@ -1887,6 +1910,7 @@ static void initStatic__BogaudioModules()
 #undef modelVCA
 #undef modelVCF
 #undef modelVCO
+#undef modelMix4
     }
 }
 
@@ -3410,6 +3434,74 @@ static void initStatic__ValleyAudio()
     }
 }
 
+static void initStatic__Venom()
+{
+    Plugin* p = new Plugin;
+    pluginInstance__Venom = p;
+
+    const StaticPluginLoader spl(p, "Venom");
+    if (spl.ok())
+    {
+#define modelBypass modelVenomBypass
+#define modelLogic modelVenomLogic
+        p->addModel(modelAuxClone);
+        p->addModel(modelBayInput);
+        p->addModel(modelBayNorm);
+        p->addModel(modelBayOutput);
+        p->addModel(modelBenjolinOsc);
+        p->addModel(modelBenjolinGatesExpander);
+        p->addModel(modelBenjolinVoltsExpander);
+        p->addModel(modelBernoulliSwitch);
+        p->addModel(modelBernoulliSwitchExpander);
+        p->addModel(modelBlocker);
+        p->addModel(modelBypass);
+        p->addModel(modelCloneMerge);
+        p->addModel(modelHQ);
+        p->addModel(modelKnob5);
+        p->addModel(modelLinearBeats);
+        p->addModel(modelLinearBeatsExpander);
+        p->addModel(modelLogic);
+        p->addModel(modelMix4);
+        p->addModel(modelMix4Stereo);
+        p->addModel(modelMixFade);
+        p->addModel(modelMixFade2);
+        p->addModel(modelMixMute);
+        p->addModel(modelMixOffset);
+        p->addModel(modelMixPan);
+        p->addModel(modelMixSend);
+        p->addModel(modelMixSolo);
+        p->addModel(modelMousePad);
+        p->addModel(modelMultiMerge);
+        p->addModel(modelMultiSplit);
+        p->addModel(modelOscillator);
+        p->addModel(modelNORS_IQ);
+        p->addModel(modelNORSIQChord2Scale);
+        p->addModel(modelPolyClone);
+        p->addModel(modelPolyFade);
+        p->addModel(modelPolyOffset);
+        p->addModel(modelPolySHASR);
+        p->addModel(modelPolyScale);
+        p->addModel(modelPolyUnison);
+        p->addModel(modelPush5);
+        p->addModel(modelQuadVCPolarizer);
+        p->addModel(modelRecurse);
+        p->addModel(modelRecurseStereo);
+        p->addModel(modelReformation);
+        p->addModel(modelRhythmExplorer);
+        p->addModel(modelShapedVCA);
+        p->addModel(modelThru);
+        p->addModel(modelVCAMix4);
+        p->addModel(modelVCAMix4Stereo);
+        p->addModel(modelVCOUnit);
+        p->addModel(modelVenomBlank);
+        p->addModel(modelWaveFolder);
+        p->addModel(modelWidgetMenuExtender);
+        p->addModel(modelWinComp);
+#undef modelBypass
+#undef modelLogic
+    }
+}
+
 static void initStatic__Voxglitch()
 {
     Plugin* p = new Plugin;
@@ -3586,6 +3678,7 @@ void initStaticPlugins()
     initStatic__surgext();
     initStatic__unless_modules();
     initStatic__ValleyAudio();
+    initStatic__Venom();
     initStatic__Voxglitch();
     initStatic__WhatTheRack();
     initStatic__ZetaCarinaeModules();
