@@ -263,3 +263,7 @@
 [submodule "plugins/Venom"]
 	path = plugins/Venom
 	url = https://github.com/DaveBenham/VenomModules
+
+[submodule "plugins/countmodula"]
+	path = plugins/countmodula
+	url = https://github.com/countmodula/VCVRackPlugins.git

@@ -671,6 +671,16 @@ PLUGIN_FILES += $(filter-out Computerscare/src/Computerscare.cpp Computerscare/s
 COMPUTERSCARE_CUSTOM = Quantizer PanelBorder
 
 # --------------------------------------------------------------
+# countmodula
+
+PLUGIN_FILES += $(wildcard countmodula/src/*.cpp)
+PLUGIN_FILES += $(wildcard countmodula/src/components/*.cpp)
+PLUGIN_FILES += $(wildcard countmodula/src/modules/*.cpp)
+
+# modules/types which are present in other plugins
+COUNTMODULA_CUSTOM = Comparator Mixer Fade BusRoute Arpeggiator Mult Stack SmallKnob
+
+# --------------------------------------------------------------
 # CVfunk
 
 PLUGIN_FILES += $(filter-out CVfunk/src/plugin.cpp,$(wildcard CVfunk/src/*.cpp))
@@ -2318,6 +2328,13 @@ $(BUILD_DIR)/Computerscare/src/%.cpp.o: Computerscare/src/%.cpp
 	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
 		$(foreach m,$(COMPUTERSCARE_CUSTOM),$(call custom_module_names,$(m),Computerscare)) \
 		-DpluginInstance=pluginInstance__Computerscare
+
+$(BUILD_DIR)/countmodula/src/%.cpp.o: countmodula/src/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(COUNTMODULA_CUSTOM),$(call custom_module_names,$(m),countmodula)) \
+		-DpluginInstance=pluginInstance__countmodula
 
 $(BUILD_DIR)/CVfunk/src/%.cpp.o: CVfunk/src/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
