@@ -1081,6 +1081,12 @@ PLUGIN_FILES += $(filter-out Sapphire/src/plugin.cpp,$(wildcard Sapphire/src/*.c
 PLUGIN_FILES += $(filter-out sonusmodular/src/sonusmodular.cpp,$(wildcard sonusmodular/src/*.cpp))
 
 # --------------------------------------------------------------
+# Submarine
+
+PLUGIN_FILES += $(filter-out Submarine/src/SubmarineFree.cpp,$(wildcard Submarine/src/*.cpp))
+PLUGIN_FILES += $(wildcard Submarine/src/shared/*.cpp)
+
+# --------------------------------------------------------------
 # Starling Via
 
 PLUGIN_FILES += $(filter-out StarlingVia/src/starling.cpp,$(wildcard StarlingVia/src/*.cpp))
@@ -2814,6 +2820,15 @@ $(BUILD_DIR)/sonusmodular/%.cpp.o: sonusmodular/%.cpp
 	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
 		$(foreach m,$(SONUSMODULAR_CUSTOM),$(call custom_module_names,$(m),sonusmodular)) \
 		-DpluginInstance=pluginInstance__sonusmodular
+
+$(BUILD_DIR)/Submarine/%.cpp.o: Submarine/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(SUBMARINE_CUSTOM),$(call custom_module_names,$(m),Submarine)) \
+		-DpluginInstance=pluginInstance__Submarine \
+		-DSTDIO_OVERRIDE=Submarine \
+		-Wno-unused-but-set-variable
 
 $(BUILD_DIR)/StarlingVia/%.cpp.o: StarlingVia/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

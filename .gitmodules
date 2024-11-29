@@ -269,3 +269,8 @@
 [submodule "plugins/dbRackModules"]
 	path = plugins/dbRackModules
 	url = https://github.com/docb/dbRackModules.git
+
+[submodule "plugins/Submarine"]
+	path = plugins/Submarine
+	url = https://github.com/multivac61/SubmarineFree
+  branch = cardinal
