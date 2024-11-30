@@ -1604,12 +1604,14 @@ static void initStatic__Bacon()
         p->addModel(modelPolyGenerator);
         p->addModel(modelLintBuddy);
         p->addModel(modelLuckyHold);
-        p->addModel(modelPatchNameDisplay);
 
         // Used for testing or not practical
         spl.removeModule("ContrastBNDEditor");
         spl.removeModule("BaconTest");
         spl.removeModule("PleaseQuit");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("PatchNameDisplay");
     }
 }
 
@@ -1648,14 +1650,16 @@ static void initStatic__Befaco()
         p->addModel(modelBurst);
         p->addModel(modelVoltio);
         p->addModel(modelOctaves);
-        p->addModel(modelBypass);
-        p->addModel(modelBandit);
 #undef modelADSR
 #undef modelMixer
 #undef modelBurst
 
         // NOTE disabled in Cardinal due to MIDI usage
         spl.removeModule("MidiThingV2");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Bypass");
+        spl.removeModule("Bandit");
     }
 }
 
@@ -1714,11 +1718,13 @@ static void initStatic__Bidoo()
         p->addModel(modelSIGMA);
         p->addModel(modelFLAME);
         p->addModel(modelVOID);
-        p->addModel(modelRATEAU);
 
         // NOTE disabled in Cardinal due to curl usage
         // p->addModel(modelANTN);
         spl.removeModule("antN");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("RATEAU");
     }
 }
 
@@ -2172,8 +2178,10 @@ static void initStatic__EnigmaCurry()
       p->addModel(modelLatch);
       p->addModel(modelPulse);
       p->addModel(modelRange);
-      p->addModel(modelNegativeHarmony);
 #undef modelPulse
+
+      // Defined in manifest but not in plugin 
+      spl.removeModule("NegativeHarmony");
     }
 }
 
@@ -2531,7 +2539,6 @@ static void initStatic__JW()
     {
 #define modelQuantizer modelJWQuantizer
         p->addModel(modelAdd5);
-        p->addModel(modelAbcdSeq);
         p->addModel(modelBouncyBalls);
         p->addModel(modelCat);
         p->addModel(modelTree);
@@ -2559,12 +2566,15 @@ static void initStatic__JW()
         p->addModel(modelBlankPanelLarge);
         p->addModel(modelCoolBreeze);
         p->addModel(modelPete);
-        p->addModel(modelTimer);
        #ifndef STATIC_BUILD
         p->addModel(modelStr1ker);
        #else
         spl.removeModule("Str1ker");
        #endif
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("AbcdSeq");
+        spl.removeModule("Timer");
 #undef modelQuantizer
     }
 }
@@ -2975,10 +2985,12 @@ static void initStatic__nonlinearcircuits()
         p->addModel(modelSlothApathy);
         p->addModel(modelSlothInertia);
         p->addModel(modelSlothTorpor);
-        p->addModel(modelSplish);
         p->addModel(modelSquidAxon);
         p->addModel(modelStatues);
         p->addModel(modelTripleSloth);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Splish");
     }
 }
 
@@ -3172,9 +3184,7 @@ static void initStatic__Sapphire()
         p->addModel(modelSapphireFrolic);
         p->addModel(modelSapphireGalaxy);
         p->addModel(modelSapphireGlee);
-        p->addModel(modelSapphireGravy);
         p->addModel(modelSapphireHiss);
-        p->addModel(modelSapphireLark);
         p->addModel(modelSapphireMoots);
         p->addModel(modelSapphireNucleus);
         p->addModel(modelSapphirePivot);
@@ -3182,11 +3192,15 @@ static void initStatic__Sapphire()
         p->addModel(modelSapphirePop);
         p->addModel(modelSapphireRotini);
         p->addModel(modelSapphireSam);
-        p->addModel(modelSapphireSauce);
         p->addModel(modelSapphireTin);
         p->addModel(modelSapphireTout);
         p->addModel(modelSapphireTricorder);
         p->addModel(modelSapphireTubeUnit);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Gravy");
+        spl.removeModule("Lark");
+        spl.removeModule("Sauce");
     }
 }
 
@@ -3470,7 +3484,6 @@ static void initStatic__Venom()
         p->addModel(modelMixPan);
         p->addModel(modelMixSend);
         p->addModel(modelMixSolo);
-        p->addModel(modelMousePad);
         p->addModel(modelMultiMerge);
         p->addModel(modelMultiSplit);
         p->addModel(modelOscillator);
@@ -3497,6 +3510,10 @@ static void initStatic__Venom()
         p->addModel(modelWaveFolder);
         p->addModel(modelWidgetMenuExtender);
         p->addModel(modelWinComp);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("MousePad");
+
 #undef modelBypass
 #undef modelLogic
     }
