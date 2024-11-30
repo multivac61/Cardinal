@@ -1582,7 +1582,6 @@ static void initStatic__Bacon()
         p->addModel(modelPolyGenerator);
         p->addModel(modelLintBuddy);
         p->addModel(modelLuckyHold);
-        p->addModel(modelPatchNameDisplay);
 
         // Used for testing or not practical
         spl.removeModule("ContrastBNDEditor");
@@ -1626,8 +1625,6 @@ static void initStatic__Befaco()
         p->addModel(modelBurst);
         p->addModel(modelVoltio);
         p->addModel(modelOctaves);
-        p->addModel(modelBypass);
-        p->addModel(modelBandit);
 #undef modelADSR
 #undef modelMixer
 #undef modelBurst
@@ -1692,7 +1689,6 @@ static void initStatic__Bidoo()
         p->addModel(modelSIGMA);
         p->addModel(modelFLAME);
         p->addModel(modelVOID);
-        p->addModel(modelRATEAU);
 
         // NOTE disabled in Cardinal due to curl usage
         // p->addModel(modelANTN);
@@ -2148,7 +2144,6 @@ static void initStatic__EnigmaCurry()
       p->addModel(modelLatch);
       p->addModel(modelPulse);
       p->addModel(modelRange);
-      p->addModel(modelNegativeHarmony);
 #undef modelPulse
     }
 }
@@ -2507,7 +2502,6 @@ static void initStatic__JW()
     {
 #define modelQuantizer modelJWQuantizer
         p->addModel(modelAdd5);
-        p->addModel(modelAbcdSeq);
         p->addModel(modelBouncyBalls);
         p->addModel(modelCat);
         p->addModel(modelTree);
@@ -2535,7 +2529,6 @@ static void initStatic__JW()
         p->addModel(modelBlankPanelLarge);
         p->addModel(modelCoolBreeze);
         p->addModel(modelPete);
-        p->addModel(modelTimer);
        #ifndef STATIC_BUILD
         p->addModel(modelStr1ker);
        #else
@@ -2951,7 +2944,6 @@ static void initStatic__nonlinearcircuits()
         p->addModel(modelSlothApathy);
         p->addModel(modelSlothInertia);
         p->addModel(modelSlothTorpor);
-        p->addModel(modelSplish);
         p->addModel(modelSquidAxon);
         p->addModel(modelStatues);
         p->addModel(modelTripleSloth);
@@ -3148,9 +3140,7 @@ static void initStatic__Sapphire()
         p->addModel(modelSapphireFrolic);
         p->addModel(modelSapphireGalaxy);
         p->addModel(modelSapphireGlee);
-        p->addModel(modelSapphireGravy);
         p->addModel(modelSapphireHiss);
-        p->addModel(modelSapphireLark);
         p->addModel(modelSapphireMoots);
         p->addModel(modelSapphireNucleus);
         p->addModel(modelSapphirePivot);
@@ -3158,7 +3148,6 @@ static void initStatic__Sapphire()
         p->addModel(modelSapphirePop);
         p->addModel(modelSapphireRotini);
         p->addModel(modelSapphireSam);
-        p->addModel(modelSapphireSauce);
         p->addModel(modelSapphireTin);
         p->addModel(modelSapphireTout);
         p->addModel(modelSapphireTricorder);
