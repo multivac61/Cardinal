@@ -339,6 +339,14 @@ PLUGIN_FILES += $(filter-out alefsbits/src/plugin.cpp,$(wildcard alefsbits/src/*
 ALEFSBITS_CUSTOM = Steps Logic
 
 # --------------------------------------------------------------
+# Agavet
+
+PLUGIN_FILES += $(filter-out Agave/src/Agave.cpp,$(wildcard Agave/src/*.cpp))
+
+# modules/types which are present in other plugins
+# ALEFSBITS_CUSTOM = Steps Logic
+
+# --------------------------------------------------------------
 # AlgoritmArte
 
 PLUGIN_FILES += $(filter-out Algoritmarte/src/plugin.cpp,$(wildcard Algoritmarte/src/*.cpp))
@@ -2196,6 +2204,13 @@ $(BUILD_DIR)/alefsbits/%.cpp.o: alefsbits/%.cpp
 	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
 		$(foreach m,$(ALEFSBITS_CUSTOM),$(call custom_module_names,$(m),alefsbits)) \
 		-DpluginInstance=pluginInstance__alefsbits
+
+$(BUILD_DIR)/Agave/%.cpp.o: Agave/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(AGAVE_CUSTOM),$(call custom_module_names,$(m),Agave)) \
+		-DpluginInstance=pluginInstance__Agave
 
 $(BUILD_DIR)/Algoritmarte/%.cpp.o: Algoritmarte/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

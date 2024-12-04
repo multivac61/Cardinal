@@ -275,3 +275,6 @@
 	path = plugins/Submarine
 	url = https://github.com/multivac61/SubmarineFree
   	branch = cardinal
+[submodule "plugins/Agave"]
+	path = plugins/Agave
+	url = https://github.com/jatinchowdhury18/Agave

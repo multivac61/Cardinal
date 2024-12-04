@@ -43,6 +43,9 @@ extern Model* modelDivisions;
 #undef modelSteps
 #undef modelLogic
 
+// Agave
+#include "Agave/src/Agave.hpp"
+
 // Algoritmarte
 #include "Algoritmarte/src/plugin.hpp"
 
@@ -1058,6 +1061,7 @@ Plugin* pluginInstance__8Mode;
 extern Plugin* pluginInstance__AaronStatic;
 Plugin* pluginInstance__admiral;
 Plugin* pluginInstance__alefsbits;
+Plugin* pluginInstance__Agave;
 Plugin* pluginInstance__Algoritmarte;
 Plugin* pluginInstance__AmalgamatedHarmonics;
 Plugin* pluginInstance__ArableInstruments;
@@ -1451,6 +1455,22 @@ static void initStatic__alefsbits()
         p->addModel(modelProbablynot);
 #undef modelSteps
 #undef modelLogic
+    }
+}
+
+static void initStatic__Agave()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__Agave = p;
+
+    const StaticPluginLoader spl(p, "Agave");
+    if (spl.ok())
+    {
+        p->addModel(modelLowpassFilterBank);
+        p->addModel(modelSharpWavefolder);
+        p->addModel(modelMetallicNoise);
+        p->addModel(modelMS20VCF);
+        p->addModel(modelBlank);
     }
 }
 
@@ -4134,6 +4154,7 @@ void initStaticPlugins()
     initStatic__AaronStatic();
     initStatic__admiral();
     initStatic__alefsbits();
+    initStatic__Agave();
     initStatic__Algoritmarte();
     initStatic__AmalgamatedHarmonics();
     initStatic__AnimatedCircuits();
