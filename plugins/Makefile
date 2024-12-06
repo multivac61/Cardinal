@@ -311,6 +311,11 @@ MINIPLUGIN_FILES += Fundamental/src/VCO.cpp
 FUNDAMENTAL_CUSTOM = $(DRWAV)
 
 # --------------------------------------------------------------
+# GrandeModular
+
+GRANDEMODULAR_CUSTOM = Push
+
+# --------------------------------------------------------------
 # ZamAudio (always enabled) - TODO
 
 # PLUGIN_FILES += $(wildcard ZamAudio/src/*.cpp)
@@ -332,6 +337,14 @@ PLUGIN_FILES += $(filter-out alefsbits/src/plugin.cpp,$(wildcard alefsbits/src/*
 
 # modules/types which are present in other plugins
 ALEFSBITS_CUSTOM = Steps Logic
+
+# --------------------------------------------------------------
+# Agavet
+
+PLUGIN_FILES += $(filter-out Agave/src/Agave.cpp,$(wildcard Agave/src/*.cpp))
+
+# modules/types which are present in other plugins
+# ALEFSBITS_CUSTOM = Steps Logic
 
 # --------------------------------------------------------------
 # AlgoritmArte
@@ -633,7 +646,7 @@ MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/multimode.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/resample.cpp
 
 # modules/types which are present in other plugins
-BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF
+BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF Mix4 Mult
 BOGAUDIO_CUSTOM_PER_FILE = ARQuantity AttackMenuItem ReleaseMenuItem
 
 # --------------------------------------------------------------
@@ -671,6 +684,16 @@ PLUGIN_FILES += $(filter-out Computerscare/src/Computerscare.cpp Computerscare/s
 COMPUTERSCARE_CUSTOM = Quantizer PanelBorder
 
 # --------------------------------------------------------------
+# countmodula
+
+PLUGIN_FILES += $(wildcard countmodula/src/*.cpp)
+PLUGIN_FILES += $(wildcard countmodula/src/components/*.cpp)
+PLUGIN_FILES += $(wildcard countmodula/src/modules/*.cpp)
+
+# modules/types which are present in other plugins
+COUNTMODULA_CUSTOM = Comparator Mixer Fade BusRoute Arpeggiator Mult Stack SmallKnob
+
+# --------------------------------------------------------------
 # CVfunk
 
 PLUGIN_FILES += $(filter-out CVfunk/src/plugin.cpp,$(wildcard CVfunk/src/*.cpp))
@@ -686,6 +709,25 @@ PLUGIN_FILES += $(filter-out dBiz/src/plugin.cpp,$(wildcard dBiz/src/*.cpp))
 # modules/types which are present in other plugins
 DBIZ_CUSTOM  = Chord DarkDefaultItem Divider FourSeq FourSeqWidget OrangeLight VCA4 Wavefolder darkPanelID lightPanelID
 DBIZ_CUSTOM_PER_FILE = LERP MultiFilter Oscillator calcOutput sineOsc subBank
+
+# --------------------------------------------------------------
+# dbRackModules
+
+PLUGIN_FILES += $(filter-out dbRackModules/src/plugin.cpp dbRackModules/src/Drums.cpp,$(wildcard dbRackModules/src/*.cpp))
+
+# modules/types which are present in other plugins
+DBRACKMODULES_CUSTOM = SKF X4 MVerb Osc3
+
+PLUGIN_FILES += dbRackModules/Gamma/src/arr.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/Domain.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/scl.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/DFT.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/FFT_fftpack.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/fftpack++1.cpp
+PLUGIN_FILES += dbRackModules/Gamma/src/fftpack++2.cpp
+
+RESOURCE_FILES += $(wildcard dbRackModules/images/*.png)
+RESOURCE_FILES += $(wildcard dbRackModules/presets)
 
 # --------------------------------------------------------------
 # DHE-Modules
@@ -1052,6 +1094,12 @@ PLUGIN_FILES += $(filter-out Sapphire/src/plugin.cpp,$(wildcard Sapphire/src/*.c
 PLUGIN_FILES += $(filter-out sonusmodular/src/sonusmodular.cpp,$(wildcard sonusmodular/src/*.cpp))
 
 # --------------------------------------------------------------
+# Submarine
+
+PLUGIN_FILES += $(filter-out Submarine/src/SubmarineFree.cpp,$(wildcard Submarine/src/*.cpp))
+PLUGIN_FILES += $(wildcard Submarine/src/shared/*.cpp)
+
+# --------------------------------------------------------------
 # Starling Via
 
 PLUGIN_FILES += $(filter-out StarlingVia/src/starling.cpp,$(wildcard StarlingVia/src/*.cpp))
@@ -1309,6 +1357,12 @@ PLUGIN_BINARIES += ValleyAudio/src/XFADE.bin
 # modules/types which are present in other plugins
 VALLEYAUDIO_CUSTOM = $(DRWAV) Chord DigitalDisplay
 VALLEYAUDIO_CUSTOM_PER_FILE = TempoKnob
+
+# --------------------------------------------------------------
+# Venom
+PLUGIN_FILES += $(filter-out Venom/src/plugin.cpp Venom/src/MousePad.cpp,$(wildcard Venom/src/*.cpp))
+
+VENOM_CUSTOM = Bypass Logic DigitalDisplay YellowRedLight
 
 # --------------------------------------------------------------
 # Voxglitch
@@ -2151,6 +2205,13 @@ $(BUILD_DIR)/alefsbits/%.cpp.o: alefsbits/%.cpp
 		$(foreach m,$(ALEFSBITS_CUSTOM),$(call custom_module_names,$(m),alefsbits)) \
 		-DpluginInstance=pluginInstance__alefsbits
 
+$(BUILD_DIR)/Agave/%.cpp.o: Agave/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(AGAVE_CUSTOM),$(call custom_module_names,$(m),Agave)) \
+		-DpluginInstance=pluginInstance__Agave
+
 $(BUILD_DIR)/Algoritmarte/%.cpp.o: Algoritmarte/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
 	@echo "Compiling $<"
@@ -2313,6 +2374,13 @@ $(BUILD_DIR)/Computerscare/src/%.cpp.o: Computerscare/src/%.cpp
 		$(foreach m,$(COMPUTERSCARE_CUSTOM),$(call custom_module_names,$(m),Computerscare)) \
 		-DpluginInstance=pluginInstance__Computerscare
 
+$(BUILD_DIR)/countmodula/src/%.cpp.o: countmodula/src/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(COUNTMODULA_CUSTOM),$(call custom_module_names,$(m),countmodula)) \
+		-DpluginInstance=pluginInstance__countmodula
+
 $(BUILD_DIR)/CVfunk/src/%.cpp.o: CVfunk/src/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
 	@echo "Compiling $<"
@@ -2339,6 +2407,16 @@ $(BUILD_DIR)/dBiz/src/%.cpp.o: dBiz/src/%.cpp
 		$(foreach m,$(DBIZ_CUSTOM),$(call custom_module_names,$(m),dBiz)) \
 		$(foreach m,$(DBIZ_CUSTOM_PER_FILE),$(call custom_per_file_names,$(m),dBiz_$(shell basename $*))) \
 		-DpluginInstance=pluginInstance__dBiz
+
+$(BUILD_DIR)/dbRackModules/%.cpp.o: dbRackModules/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(DBRACKMODULES_CUSTOM),$(call custom_module_names,$(m),dbRackModules)) \
+		-DpluginInstance=pluginInstance__dbRackModules \
+		-DSTDIO_OVERRIDE=dbRackModules \
+		-IdbRackModules/Gamma \
+		-Wno-unused-but-set-variable
 
 $(BUILD_DIR)/DHE-Modules/src/%.cpp.o: DHE-Modules/src/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
@@ -2763,6 +2841,15 @@ $(BUILD_DIR)/sonusmodular/%.cpp.o: sonusmodular/%.cpp
 		$(foreach m,$(SONUSMODULAR_CUSTOM),$(call custom_module_names,$(m),sonusmodular)) \
 		-DpluginInstance=pluginInstance__sonusmodular
 
+$(BUILD_DIR)/Submarine/%.cpp.o: Submarine/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(SUBMARINE_CUSTOM),$(call custom_module_names,$(m),Submarine)) \
+		-DpluginInstance=pluginInstance__Submarine \
+		-DSTDIO_OVERRIDE=Submarine \
+		-Wno-unused-but-set-variable
+
 $(BUILD_DIR)/StarlingVia/%.cpp.o: StarlingVia/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
 	@echo "Compiling $<"
@@ -2819,6 +2906,13 @@ $(BUILD_DIR)/ValleyAudio/%.cpp.o: ValleyAudio/%.cpp
 		-IValleyAudio/src \
 		-Wno-sign-compare \
 		-Wno-unused-but-set-variable
+
+$(BUILD_DIR)/Venom/%.cpp.o: Venom/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(VENOM_CUSTOM),$(call custom_module_names,$(m),Venom)) \
+		-DpluginInstance=pluginInstance__Venom 
 
 $(BUILD_DIR)/voxglitch/%.cpp.o: voxglitch/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

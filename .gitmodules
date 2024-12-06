@@ -180,7 +180,7 @@
 	url = https://github.com/CardinalModules/ArableInstruments.git
 [submodule "plugins/Fundamental"]
 	path = plugins/Fundamental
-	url = https://github.com/CardinalModules/Fundamental.git
+	url = https://github.com/multivac61/Fundamental.git
 [submodule "plugins/unless_modules"]
 	path = plugins/unless_modules
 	url = https://gitlab.com/unlessgames/unless_modules.git
@@ -260,4 +260,18 @@
 [submodule "plugins/admiral"]
 	path = plugins/admiral
 	url = https://github.com/wapiflapi/admiral.git
-
+[submodule "plugins/Venom"]
+	path = plugins/Venom
+	url = https://github.com/DaveBenham/VenomModules
+[submodule "plugins/countmodula"]
+	path = plugins/countmodula
+	url = https://github.com/countmodula/VCVRackPlugins.git
+[submodule "plugins/dbRackModules"]
+	path = plugins/dbRackModules
+	url = https://github.com/docb/dbRackModules.git
+[submodule "plugins/Submarine"]
+	path = plugins/Submarine
+	url = https://github.com/multivac61/SubmarineFree
+[submodule "plugins/Agave"]
+	path = plugins/Agave
+	url = https://github.com/jatinchowdhury18/Agave

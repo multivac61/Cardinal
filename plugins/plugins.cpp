@@ -43,6 +43,9 @@ extern Model* modelDivisions;
 #undef modelSteps
 #undef modelLogic
 
+// Agave
+#include "Agave/src/Agave.hpp"
+
 // Algoritmarte
 #include "Algoritmarte/src/plugin.hpp"
 
@@ -201,6 +204,8 @@ extern Model* modelBlank;
 #define modelVCA modelBogaudioVCA
 #define modelVCF modelBogaudioVCF
 #define modelVCO modelBogaudioVCO
+#define modelMix4 modelBogaudioMix4
+#define modelMult modelBogaudioMult
 extern Model* modelVCO;
 extern Model* modelLVCO;
 extern Model* modelSine;
@@ -331,6 +336,8 @@ extern Model* modelTestVCF;
 #undef modelVCA
 #undef modelVCF
 #undef modelVCO
+#undef modelMix4
+#undef modelMult
 
 // CatroModulo
 #include "CatroModulo/src/CatroModulo.hpp"
@@ -352,6 +359,27 @@ extern Model* modelTestVCF;
 // Computerscare
 #include "Computerscare/src/Computerscare.hpp"
 
+// countmodula
+#define modelComparator modelcountmodulaComparator
+#define modelMixer modelcountmodulaMixer
+#define modelFade modelcountmodulaFade
+#define modelBusRoute modelcountmodulaBusRoute
+#define modelArpeggiator modelcountmodulaArpeggiator
+#define modelMult modelcountmodulaMult
+#define modelStack modelcountmodulaStack
+#define SmallKnob countmodulaSmallKnob
+#define RotarySwitch countmodulaRotarySwitch
+#include "countmodula/src/CountModula.hpp"
+#undef modelComparator
+#undef modelMixer
+#undef modelFade
+#undef modelBusRoute
+#undef modelArpeggiator
+#undef modelMult
+#undef modelStack
+#undef RotarySwitch
+#undef SmallKnob
+
 // dBiz
 #define DarkDefaultItem dBizDarkDefaultItem
 #define OrangeLight dBizOrangeLight
@@ -370,6 +398,97 @@ extern Model* modelTestVCF;
 #undef modelDivider
 #undef modelFourSeq
 #undef modelVCA4
+
+// dbRackModules
+#define modelSKF modeldbRackModulesSKF
+#define modelX4 modeldbRackModulesX4
+#define modelMVerb modeldbRackModulesMVerb
+#define modelOsc3 modeldbRackModulesOsc3
+extern Model* modelGeneticTerrain;
+extern Model* modelGeneticSuperTerrain;
+extern Model* modelDCBlock;
+extern Model* modelRndHvs3;
+extern Model* modelJTScaler;
+extern Model* modelAddSynth;
+extern Model* modelRndH;
+extern Model* modelRndC;
+extern Model* modelGenScale;
+extern Model* modelJTKeys;
+extern Model* modelHopa;
+extern Model* modelFrac;
+extern Model* modelHexSeq;
+extern Model* modelInterface;
+extern Model* modelHexSeqP;
+extern Model* modelMVerb;
+extern Model* modelPShift;
+extern Model* modelFLA;
+extern Model* modelFLL;
+extern Model* modelGendy;
+extern Model* modelRtrig;
+extern Model* modelSTrig;
+extern Model* modelRSC;
+extern Model* modelPad;
+extern Model* modelRndG;
+extern Model* modelPlotter;
+extern Model* modelSuperLFO;
+extern Model* modelHexSeqExp;
+extern Model* modelPad2;
+extern Model* modelPHSR;
+extern Model* modelPhS;
+extern Model* modelSPL;
+extern Model* modelPhO;
+extern Model* modelFaders;
+extern Model* modelYC;
+extern Model* modelPLC;
+extern Model* modelMPad2;
+extern Model* modelPHSR2;
+extern Model* modelEVA;
+extern Model* modelRatio;
+extern Model* modelCSOSC;
+extern Model* modelBWF;
+extern Model* modelPRB;
+extern Model* modelOsc2;
+extern Model* modelRndH2;
+extern Model* modelOFS;
+extern Model* modelOFS3;
+extern Model* modelOsc1;
+extern Model* modelOsc3;
+extern Model* modelOsc4;
+extern Model* modelOsc5;
+extern Model* modelL4P;
+extern Model* modelSKF;
+extern Model* modelSPF;
+extern Model* modelUSVF;
+extern Model* modelAP;
+extern Model* modelWS;
+extern Model* modelAUX;
+extern Model* modelCHBY;
+extern Model* modelCLP;
+extern Model* modelLWF;
+extern Model* modelDRM;
+extern Model* modelCWS;
+extern Model* modelSWF;
+extern Model* modelOsc6;
+/*extern Model* modelDrums;*/
+extern Model* modelPPD;
+extern Model* modelOsc7;
+extern Model* modelOsc8;
+extern Model* modelOsc9;
+extern Model* modelFS6;
+extern Model* modelPulsar;
+extern Model* modelOscA1;
+extern Model* modelOscS;
+extern Model* modelOscP;
+extern Model* modelX16;
+extern Model* modelX8;
+extern Model* modelX4;
+extern Model* modelX6;
+extern Model* modelCVS;
+extern Model* modelDTrig;
+#undef modelSKF
+#undef modelX4
+#undef modelMVerb
+#undef modelOsc3
 
 // DHEModules
 // NOTE very unique way of handling init, needs special handling
@@ -427,7 +546,9 @@ void saveGtgPluginDefault(const char*, int) {}
 #include "GoodSheperd/src/plugin.hpp"
 
 // GrandeModular
+#define modelPush modelGrandeModularPush
 #include "GrandeModular/src/plugin.hpp"
+#undef modelPush
 
 // H4N4 Modules
 #include "h4n4-modules/src/plugin.hpp"
@@ -863,6 +984,9 @@ StoermelderSettings pluginSettings;
 void StoermelderSettings::saveToJson() {}
 void StoermelderSettings::readFromJson() {}
 
+// Submarine
+#include "Submarine/src/SubmarineFree.hpp"
+
 // surgext
 #include "surgext/src/SurgeXT.h"
 void surgext_rack_initialize();
@@ -873,6 +997,25 @@ void surgext_rack_update_theme();
 
 // ValleyAudio
 #include "ValleyAudio/src/Valley.hpp"
+
+// Venom
+#define modelBypass modelVenomBypass
+#define modelLogic modelVenomLogic
+#define YellowRedLight VenomYellowRedLight
+#define YellowBlueLight VenomYellowBlueLight
+#define DigitalDisplay VenomDigitalDisplay
+#include "Venom/src/plugin.hpp"
+#undef DigitalDisplay
+#undef YellowRedLight
+#undef YellowBlueLight
+#undef modelBypass
+#undef modelLogic
+
+// TODO: Figure out a a better way to define these
+int getDefaultTheme(){ return 0; }
+int getDefaultDarkTheme(){ return 1; }
+void setDefaultTheme(int){  }
+void setDefaultDarkTheme(int){  }
 
 // Voxglitch
 #define modelLooper modelVoxglitchLooper
@@ -918,6 +1061,7 @@ Plugin* pluginInstance__8Mode;
 extern Plugin* pluginInstance__AaronStatic;
 Plugin* pluginInstance__admiral;
 Plugin* pluginInstance__alefsbits;
+Plugin* pluginInstance__Agave;
 Plugin* pluginInstance__Algoritmarte;
 Plugin* pluginInstance__AmalgamatedHarmonics;
 Plugin* pluginInstance__ArableInstruments;
@@ -936,8 +1080,10 @@ Plugin* pluginInstance__CatroModulo;
 Plugin* pluginInstance__cf;
 Plugin* pluginInstance__ChowDSP;
 Plugin* pluginInstance__Computerscare;
+extern Plugin* pluginInstance__countmodula;
 Plugin* pluginInstance__CVfunk;
 Plugin* pluginInstance__dBiz;
+Plugin* pluginInstance__dbRackModules;
 Plugin* pluginInstance__DHE;
 extern Plugin* pluginInstance__DrumKit;
 Plugin* pluginInstance__EnigmaCurry;
@@ -986,9 +1132,11 @@ Plugin* pluginInstance__sonusmodular;
 Plugin* pluginInstance__StarlingVia;
 Plugin* pluginInstance__stocaudio;
 extern Plugin* pluginInstance__stoermelder_p1;
+Plugin* pluginInstance__Submarine;
 Plugin* pluginInstance__surgext;
 Plugin* pluginInstance__unless_modules;
 Plugin* pluginInstance__ValleyAudio;
+Plugin* pluginInstance__Venom;
 Plugin* pluginInstance__Voxglitch;
 Plugin* pluginInstance__WhatTheRack;
 Plugin* pluginInstance__ZetaCarinaeModules;
@@ -1185,6 +1333,7 @@ static void initStatic__Fundamental()
         p->addModel(modelPulses);
         p->addModel(modelQuantizer);
         p->addModel(modelRandom);
+        p->addModel(modelCVMix);
         p->addModel(modelScope);
         p->addModel(modelSEQ3);
         p->addModel(modelSequentialSwitch1);
@@ -1197,6 +1346,18 @@ static void initStatic__Fundamental()
         p->addModel(modelVCMixer);
         p->addModel(modelVCO);
         p->addModel(modelVCO2);
+        p->addModel(modelCompare);
+        p->addModel(modelFade);
+        p->addModel(modelGates);
+        p->addModel(modelLogic);
+        p->addModel(modelMult);
+        p->addModel(modelProcess);
+        p->addModel(modelPush);
+        p->addModel(modelRandomValues);
+        p->addModel(modelRescale);
+        p->addModel(modelSHASR);
+        p->addModel(modelUnity);
+        p->addModel(modelViz);
     }
 }
 
@@ -1294,6 +1455,22 @@ static void initStatic__alefsbits()
         p->addModel(modelProbablynot);
 #undef modelSteps
 #undef modelLogic
+    }
+}
+
+static void initStatic__Agave()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__Agave = p;
+
+    const StaticPluginLoader spl(p, "Agave");
+    if (spl.ok())
+    {
+        p->addModel(modelLowpassFilterBank);
+        p->addModel(modelSharpWavefolder);
+        p->addModel(modelMetallicNoise);
+        p->addModel(modelMS20VCF);
+        p->addModel(modelBlank);
     }
 }
 
@@ -1587,6 +1764,9 @@ static void initStatic__Bacon()
         spl.removeModule("ContrastBNDEditor");
         spl.removeModule("BaconTest");
         spl.removeModule("PleaseQuit");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("PatchNameDisplay");
     }
 }
 
@@ -1631,6 +1811,10 @@ static void initStatic__Befaco()
 
         // NOTE disabled in Cardinal due to MIDI usage
         spl.removeModule("MidiThingV2");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Bypass");
+        spl.removeModule("Bandit");
     }
 }
 
@@ -1693,6 +1877,9 @@ static void initStatic__Bidoo()
         // NOTE disabled in Cardinal due to curl usage
         // p->addModel(modelANTN);
         spl.removeModule("antN");
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("RATEAU");
     }
 }
 
@@ -1753,6 +1940,8 @@ static void initStatic__BogaudioModules()
 #define modelVCA modelBogaudioVCA
 #define modelVCF modelBogaudioVCF
 #define modelVCO modelBogaudioVCO
+#define modelMix4 modelBogaudioMix4
+#define modelMult modelBogaudioMult
         p->addModel(modelVCO);
         p->addModel(modelLVCO);
         p->addModel(modelSine);
@@ -1883,6 +2072,8 @@ static void initStatic__BogaudioModules()
 #undef modelVCA
 #undef modelVCF
 #undef modelVCO
+#undef modelMix4
+#undef modelMult
     }
 }
 
@@ -1999,6 +2190,167 @@ static void initStatic__Computerscare()
     }
 }
 
+static void initStatic__countmodula()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__countmodula = p;
+
+    const StaticPluginLoader spl(p, "countmodula");
+    if (spl.ok())
+    {
+#define modelComparator modelcountmodulaComparator
+#define modelMixer modelcountmodulaMixer
+#define modelFade modelcountmodulaFade
+#define modelBusRoute modelcountmodulaBusRoute
+#define modelArpeggiator modelcountmodulaArpeggiator
+#define modelMult modelcountmodulaMult
+#define modelStack modelcountmodulaStack
+    p->addModel(modelAnalogueShiftRegister);	
+    p->addModel(modelArpeggiator);	
+    p->addModel(modelAttenuator);	
+    p->addModel(modelAttenuverter);	
+    p->addModel(modelBarGraph);	
+    p->addModel(modelBasicSequencer8);	
+    p->addModel(modelBinaryComparator);	
+    p->addModel(modelBinarySequencer);	
+    p->addModel(modelBlank12HP);	
+    p->addModel(modelBlank16HP);	
+    p->addModel(modelBlank20HP);	
+    p->addModel(modelBlank24HP);	
+    p->addModel(modelBlank2HP);	
+    p->addModel(modelBlank4HP);	
+    p->addModel(modelBlank8HP);	
+    p->addModel(modelBooleanAND);	
+    p->addModel(modelBooleanOR);	
+    p->addModel(modelBooleanVCNOT);	
+    p->addModel(modelBooleanXOR);	
+    p->addModel(modelBreakout);	
+    p->addModel(modelBurstGenerator);	
+    p->addModel(modelBurstGenerator64);	
+    p->addModel(modelBusRoute);	
+    p->addModel(modelBusRoute2);	
+    p->addModel(modelCarousel);	
+    p->addModel(modelChances);	
+    p->addModel(modelClockDivider);	
+    p->addModel(modelClockedRandomGateExpanderCV);	
+    p->addModel(modelClockedRandomGateExpanderLog);	
+    p->addModel(modelClockedRandomGates);	
+    p->addModel(modelComparator);	
+    p->addModel(modelCVSpreader);	
+    p->addModel(modelGateSequencer16b);	
+    p->addModel(modelEuclid);	
+    p->addModel(modelEuclidExpanderCV);	
+    p->addModel(modelEventArranger);	
+    p->addModel(modelEventTimer);	
+    p->addModel(modelEventTimer2);	
+    p->addModel(modelFade);	
+    p->addModel(modelFadeExpander);	
+    p->addModel(modelG2T);	
+    p->addModel(modelGatedComparator);	
+    p->addModel(modelGateDelay);	
+    p->addModel(modelGateDelayMT);	
+    p->addModel(modelGateModifier);	
+    p->addModel(modelGateSequencer16);	
+    p->addModel(modelGateSequencer8);	
+    p->addModel(modelHyperManiacalLFO);	
+    p->addModel(modelHyperManiacalLFOExpander);	
+    p->addModel(modelLightStrip);	
+    p->addModel(modelMangler);	
+    p->addModel(modelManifold);	
+    p->addModel(modelManualCV);	
+    p->addModel(modelManualCV2);	
+    p->addModel(modelManualGate);	
+    p->addModel(modelMasterReset);	
+    p->addModel(modelMatrixCombiner);	
+    p->addModel(modelMatrixMixer);	
+    p->addModel(modelMegalomaniac);	
+    p->addModel(modelMinimusMaximus);	
+    p->addModel(modelMixer);	
+    p->addModel(modelMorphShaper);	
+    p->addModel(modelMult);	
+    p->addModel(modelMultiplexer);	
+    p->addModel(modelMultiStepSequencer);	
+    p->addModel(modelMute);	
+    p->addModel(modelMuteIple);	
+    p->addModel(modelNibbleTriggerSequencer);	
+    p->addModel(modelOctetTriggerSequencer);	
+    p->addModel(modelOctetTriggerSequencerCVExpander);	
+    p->addModel(modelOctetTriggerSequencerGateExpander);	
+    p->addModel(modelOffsetGenerator);	
+    p->addModel(modelOscilloscope);	
+    p->addModel(modelPalette);	
+    p->addModel(modelPolyChances);	
+    p->addModel(modelPolyG2T);	
+    p->addModel(modelPolyGateModifier);	
+    p->addModel(modelPolyLogic);	
+    p->addModel(modelPolyMinMax);	
+    p->addModel(modelPolyMute);	
+    p->addModel(modelPolyrhythmicGenerator);	
+    p->addModel(modelPolyrhythmicGeneratorMkII);	
+    p->addModel(modelPolyVCPolarizer);	
+    p->addModel(modelPolyVCSwitch);	
+    p->addModel(modelRackEarLeft);	
+    p->addModel(modelRackEarRight);	
+    p->addModel(modelRandomAccessSwitch18);
+    p->addModel(modelRandomAccessSwitch81);
+    p->addModel(modelRectifier);	
+    p->addModel(modelSampleAndHold);	
+    p->addModel(modelSampleAndHold2);	
+    p->addModel(modelSequenceEncoder);	
+    p->addModel(modelSequencer16);	
+    p->addModel(modelSequencer64);
+    p->addModel(modelSequencer8);	
+    p->addModel(modelSequencerChannel16);	
+    p->addModel(modelSequencerChannel8);	
+    p->addModel(modelSequencerExpanderCV8);	
+    p->addModel(modelSequencerExpanderLog8);	
+    p->addModel(modelSequencerExpanderOut8);	
+    p->addModel(modelSequencerExpanderRM8);	
+    p->addModel(modelSequencerExpanderTrig8);	
+    p->addModel(modelSequencerExpanderTSG);	
+    p->addModel(modelSequencerGates16);	
+    p->addModel(modelSequencerGates8);	
+    p->addModel(modelSequencerTriggers16);	
+    p->addModel(modelSequencerTriggers8);	
+    p->addModel(modelShepardGenerator);	
+    p->addModel(modelShiftRegister16);	
+    p->addModel(modelShiftRegister32);	
+    p->addModel(modelSingleDFlipFlop);	
+    p->addModel(modelSingleSRFlipFlop);	
+    p->addModel(modelSingleTFlipFlop);	
+    p->addModel(modelSlopeDetector);	
+    p->addModel(modelSRFlipFlop);	
+    p->addModel(modelStack);
+    p->addModel(modelStartupDelay);	
+    p->addModel(modelStepSequencer8);	
+    p->addModel(modelSubHarmonicGenerator);	
+    p->addModel(modelSwitch16To1);	
+    p->addModel(modelSwitch1To16);	
+    p->addModel(modelSwitch1To8);	
+    p->addModel(modelSwitch2);	
+    p->addModel(modelSwitch3);	
+    p->addModel(modelSwitch4);	
+    p->addModel(modelSwitch8To1);	
+    p->addModel(modelTFlipFlop);	
+    p->addModel(modelTriggerSequencer16);	
+    p->addModel(modelTriggerSequencer8);	
+    p->addModel(modelVCFrequencyDivider);	
+    p->addModel(modelVCFrequencyDividerMkII);	
+    p->addModel(modelVCPolarizer);	
+    p->addModel(modelVCPulseDivider);	
+    p->addModel(modelVoltageControlledSwitch);	
+    p->addModel(modelVoltageInverter);	
+    p->addModel(modelVoltageScaler);	
+#undef modelComparator
+#undef modelMixer
+#undef modelFade
+#undef modelBusRoute
+#undef modelArpeggiator
+#undef modelMult
+#undef modelStack
+    }
+}
+
 static void initStatic__CVfunk()
 {
     Plugin* const p = new Plugin;
@@ -2081,6 +2433,110 @@ static void initStatic__dBiz()
     }
 }
 
+static void initStatic__dbRackModules()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__dbRackModules = p;
+
+    const StaticPluginLoader spl(p, "dbRackModules");
+    if (spl.ok())
+    {
+#define modelSKF modeldbRackModulesSKF
+#define modelX4 modeldbRackModulesX4
+#define modelMVerb modeldbRackModulesMVerb
+#define modelOsc3 modeldbRackModulesOsc3
+        p->addModel(modelGeneticTerrain);
+        p->addModel(modelGeneticSuperTerrain);
+        p->addModel(modelDCBlock);
+        p->addModel(modelRndHvs3);
+        p->addModel(modelJTScaler);
+        p->addModel(modelAddSynth);
+        p->addModel(modelRndH);
+        p->addModel(modelRndC);
+        p->addModel(modelGenScale);
+        p->addModel(modelJTKeys);
+        p->addModel(modelHopa);
+        p->addModel(modelFrac);
+        p->addModel(modelHexSeq);
+        p->addModel(modelInterface);
+        p->addModel(modelHexSeqP);
+        p->addModel(modelMVerb);
+        p->addModel(modelPShift);
+        p->addModel(modelFLA);
+        p->addModel(modelFLL);
+        p->addModel(modelGendy);
+        p->addModel(modelRtrig);
+        p->addModel(modelSTrig);
+        p->addModel(modelRSC);
+        p->addModel(modelPad);
+        p->addModel(modelRndG);
+        p->addModel(modelPlotter);
+        p->addModel(modelSuperLFO);
+        p->addModel(modelHexSeqExp);
+        p->addModel(modelPad2);
+        p->addModel(modelPHSR);
+        p->addModel(modelPhS);
+        p->addModel(modelSPL);
+        p->addModel(modelPhO);
+        p->addModel(modelFaders);
+        p->addModel(modelYC);
+        p->addModel(modelPLC);
+        p->addModel(modelMPad2);
+        p->addModel(modelPHSR2);
+        p->addModel(modelEVA);
+        p->addModel(modelCSOSC);
+        p->addModel(modelRatio);
+        p->addModel(modelBWF);
+        p->addModel(modelPRB);
+        p->addModel(modelOsc2);
+        p->addModel(modelRndH2);
+        p->addModel(modelOFS);
+        p->addModel(modelOFS3);
+        p->addModel(modelOsc1);
+        p->addModel(modelOsc3);
+        p->addModel(modelOsc4);
+        p->addModel(modelOsc5);
+        p->addModel(modelSKF);
+        p->addModel(modelSPF);
+        p->addModel(modelL4P);
+        p->addModel(modelUSVF);
+        p->addModel(modelAP);
+        p->addModel(modelAUX);
+        p->addModel(modelWS);
+        p->addModel(modelCHBY);
+        p->addModel(modelCLP);
+        p->addModel(modelLWF);
+        p->addModel(modelDRM);
+        p->addModel(modelCWS);
+        p->addModel(modelSWF);
+        p->addModel(modelOsc6);
+        /*p->addModel(modelDrums);*/
+        p->addModel(modelPPD);
+        p->addModel(modelOsc7);
+        p->addModel(modelOsc8);
+        p->addModel(modelOsc9);
+        p->addModel(modelFS6);
+        p->addModel(modelPulsar);
+        p->addModel(modelOscA1);
+        p->addModel(modelOscS);
+        p->addModel(modelOscP);
+        p->addModel(modelX16);
+        p->addModel(modelX8);
+        p->addModel(modelX4);
+        p->addModel(modelX6);
+        p->addModel(modelCVS);
+        p->addModel(modelDTrig);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Drums");
+
+#undef modelSKF
+#undef modelX4
+#undef modelMVerb
+#undef modelOsc3
+    }
+}
+
 static void initStatic__DHE()
 {
     Plugin* const p = new Plugin;
@@ -2145,6 +2601,9 @@ static void initStatic__EnigmaCurry()
       p->addModel(modelPulse);
       p->addModel(modelRange);
 #undef modelPulse
+
+      // Defined in manifest but not in plugin 
+      spl.removeModule("NegativeHarmony");
     }
 }
 
@@ -2300,7 +2759,9 @@ static void initStatic__GrandeModular()
         p->addModel(modelPeak);
         p->addModel(modelPolyMergeResplit);
         p->addModel(modelPolySplit);
+#define modelPush modelGrandeModularPush
         p->addModel(modelPush);
+#undef modelPush
         p->addModel(modelQuant);
         p->addModel(modelQuantIntervals);
         p->addModel(modelQuantMT);
@@ -2534,6 +2995,10 @@ static void initStatic__JW()
        #else
         spl.removeModule("Str1ker");
        #endif
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("AbcdSeq");
+        spl.removeModule("Timer");
 #undef modelQuantizer
     }
 }
@@ -2947,6 +3412,9 @@ static void initStatic__nonlinearcircuits()
         p->addModel(modelSquidAxon);
         p->addModel(modelStatues);
         p->addModel(modelTripleSloth);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Splish");
     }
 }
 
@@ -3152,6 +3620,11 @@ static void initStatic__Sapphire()
         p->addModel(modelSapphireTout);
         p->addModel(modelSapphireTricorder);
         p->addModel(modelSapphireTubeUnit);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("Gravy");
+        spl.removeModule("Lark");
+        spl.removeModule("Sauce");
     }
 }
 
@@ -3294,6 +3767,112 @@ static void initStatic__stoermelder_p1()
     }
 }
 
+static void initStatic__Submarine()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__Submarine = p;
+
+    const StaticPluginLoader spl(p, "Submarine");
+    if (spl.ok())
+    {
+      p->addModel(modelXX219);
+
+      p->addModel(modelAG104);
+      p->addModel(modelAG106);
+      p->addModel(modelAG202);
+      p->addModel(modelAO101);
+      p->addModel(modelAO106);
+      p->addModel(modelAO112);
+      p->addModel(modelAO118);
+      p->addModel(modelAO124);
+      p->addModel(modelAO136);
+      p->addModel(modelBB120);
+      p->addModel(modelDN112);
+      p->addModel(modelDO105);
+      p->addModel(modelDO110);
+      p->addModel(modelDO115);
+      p->addModel(modelDO120);
+      p->addModel(modelEN104);
+      p->addModel(modelEO102);
+      p->addModel(modelFF110);
+      p->addModel(modelFF120);
+      p->addModel(modelFF206);
+      p->addModel(modelFF212);
+      p->addModel(modelHS101);
+      p->addModel(modelLA108);
+      p->addModel(modelLA216);
+      p->addModel(modelLD103);
+      p->addModel(modelLD106);
+      p->addModel(modelLT116);
+      p->addModel(modelMZ909);
+      p->addModel(modelNG106);
+      p->addModel(modelNG112);
+      p->addModel(modelNG206);
+      p->addModel(modelOA103);
+      p->addModel(modelOA105);
+      p->addModel(modelOG104);
+      p->addModel(modelOG106);
+      p->addModel(modelOG202);
+      p->addModel(modelPG104);
+      p->addModel(modelPG112);
+      p->addModel(modelPO101);
+      p->addModel(modelPO102);
+      p->addModel(modelPO204);
+
+      p->addModel(modelSN101);
+
+      p->addModel(modelSS112);
+      p->addModel(modelSS208);
+      p->addModel(modelSS212);
+      p->addModel(modelSS220);
+      p->addModel(modelSS221);
+
+      p->addModel(modelTD116);
+      p->addModel(modelTD202);
+      p->addModel(modelTD316);
+      p->addModel(modelTD410);
+      p->addModel(modelTD510);
+      p->addModel(modelTF101);
+      p->addModel(modelTF102);
+      p->addModel(modelTM105);
+
+      p->addModel(modelVM101);
+      p->addModel(modelVM102);
+      p->addModel(modelVM104);
+      p->addModel(modelVM201);
+      p->addModel(modelVM202);
+      p->addModel(modelVM204);
+
+      p->addModel(modelWK101);
+      p->addModel(modelWK205);
+
+      p->addModel(modelWM101);
+      p->addModel(modelWM102);
+
+      p->addModel(modelXF101);
+      p->addModel(modelXF102);
+      p->addModel(modelXF104);
+      p->addModel(modelXF201);
+      p->addModel(modelXF202);
+      p->addModel(modelXF301);
+
+      p->addModel(modelXG104);
+      p->addModel(modelXG106);
+      p->addModel(modelXG202);
+
+      p->addModel(modelBP101);
+      p->addModel(modelBP102);
+      p->addModel(modelBP104);
+      p->addModel(modelBP108);
+      p->addModel(modelBP110);
+      p->addModel(modelBP112);
+      p->addModel(modelBP116);
+      p->addModel(modelBP120);
+      p->addModel(modelBP124);
+      p->addModel(modelBP132);
+    }
+}
+
 static void initStatic__surgext()
 {
     Plugin* const p = new Plugin;
@@ -3396,6 +3975,77 @@ static void initStatic__ValleyAudio()
         p->addModel(modelAmalgam);
         p->addModel(modelFeline);
         p->addModel(modelTerrorform);
+    }
+}
+
+static void initStatic__Venom()
+{
+    Plugin* p = new Plugin;
+    pluginInstance__Venom = p;
+
+    const StaticPluginLoader spl(p, "Venom");
+    if (spl.ok())
+    {
+#define modelBypass modelVenomBypass
+#define modelLogic modelVenomLogic
+        p->addModel(modelAuxClone);
+        p->addModel(modelBayInput);
+        p->addModel(modelBayNorm);
+        p->addModel(modelBayOutput);
+        p->addModel(modelBenjolinOsc);
+        p->addModel(modelBenjolinGatesExpander);
+        p->addModel(modelBenjolinVoltsExpander);
+        p->addModel(modelBernoulliSwitch);
+        p->addModel(modelBernoulliSwitchExpander);
+        p->addModel(modelBlocker);
+        p->addModel(modelBypass);
+        p->addModel(modelCloneMerge);
+        p->addModel(modelHQ);
+        p->addModel(modelKnob5);
+        p->addModel(modelLinearBeats);
+        p->addModel(modelLinearBeatsExpander);
+        p->addModel(modelLogic);
+        p->addModel(modelMix4);
+        p->addModel(modelMix4Stereo);
+        p->addModel(modelMixFade);
+        p->addModel(modelMixFade2);
+        p->addModel(modelMixMute);
+        p->addModel(modelMixOffset);
+        p->addModel(modelMixPan);
+        p->addModel(modelMixSend);
+        p->addModel(modelMixSolo);
+        p->addModel(modelMultiMerge);
+        p->addModel(modelMultiSplit);
+        p->addModel(modelOscillator);
+        p->addModel(modelNORS_IQ);
+        p->addModel(modelNORSIQChord2Scale);
+        p->addModel(modelPolyClone);
+        p->addModel(modelPolyFade);
+        p->addModel(modelPolyOffset);
+        p->addModel(modelPolySHASR);
+        p->addModel(modelPolyScale);
+        p->addModel(modelPolyUnison);
+        p->addModel(modelPush5);
+        p->addModel(modelQuadVCPolarizer);
+        p->addModel(modelRecurse);
+        p->addModel(modelRecurseStereo);
+        p->addModel(modelReformation);
+        p->addModel(modelRhythmExplorer);
+        p->addModel(modelShapedVCA);
+        p->addModel(modelThru);
+        p->addModel(modelVCAMix4);
+        p->addModel(modelVCAMix4Stereo);
+        p->addModel(modelVCOUnit);
+        p->addModel(modelVenomBlank);
+        p->addModel(modelWaveFolder);
+        p->addModel(modelWidgetMenuExtender);
+        p->addModel(modelWinComp);
+
+        // Defined in manifest but not in plugin 
+        spl.removeModule("MousePad");
+
+#undef modelBypass
+#undef modelLogic
     }
 }
 
@@ -3504,6 +4154,7 @@ void initStaticPlugins()
     initStatic__AaronStatic();
     initStatic__admiral();
     initStatic__alefsbits();
+    initStatic__Agave();
     initStatic__Algoritmarte();
     initStatic__AmalgamatedHarmonics();
     initStatic__AnimatedCircuits();
@@ -3522,8 +4173,10 @@ void initStaticPlugins()
     initStatic__cf();
     initStatic__ChowDSP();
     initStatic__Computerscare();
+    initStatic__countmodula();
     initStatic__CVfunk();
     initStatic__dBiz();
+    initStatic__dbRackModules();
     initStatic__DHE();
     initStatic__DrumKit();
     initStatic__EnigmaCurry();
@@ -3572,9 +4225,11 @@ void initStaticPlugins()
     initStatic__StarlingVia();
     initStatic__stocaudio();
     initStatic__stoermelder_p1();
+    initStatic__Submarine();
     initStatic__surgext();
     initStatic__unless_modules();
     initStatic__ValleyAudio();
+    initStatic__Venom();
     initStatic__Voxglitch();
     initStatic__WhatTheRack();
     initStatic__ZetaCarinaeModules();
