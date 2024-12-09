@@ -262,7 +262,7 @@
 	url = https://github.com/wapiflapi/admiral.git
 [submodule "plugins/Venom"]
 	path = plugins/Venom
-	url = https://github.com/DaveBenham/VenomModules
+	url = https://github.com/DaveBenham/VenomModules.git
 [submodule "plugins/countmodula"]
 	path = plugins/countmodula
 	url = https://github.com/countmodula/VCVRackPlugins.git
@@ -271,7 +271,7 @@
 	url = https://github.com/docb/dbRackModules.git
 [submodule "plugins/Submarine"]
 	path = plugins/Submarine
-	url = https://github.com/multivac61/SubmarineFree
+	url = https://github.com/multivac61/SubmarineFree.git
 [submodule "plugins/Agave"]
 	path = plugins/Agave
-	url = https://github.com/jatinchowdhury18/Agave
+	url = https://github.com/jatinchowdhury18/Agave.git
