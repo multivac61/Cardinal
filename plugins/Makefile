@@ -2115,14 +2115,19 @@ plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@echo $(PLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)for obj in $(PLUGIN_OBJS); do \
+		$(AR) r $@ $$obj; \
+	done
 	$(SILENT)$(AR) s $@
+
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@echo $(MINIPLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)for obj in $(MINIPLUGIN_OBJS); do \
+		$(AR) r $@ $$obj; \
+	done
 	$(SILENT)$(AR) s $@
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
