@@ -2115,19 +2115,15 @@ plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@mkdir -p $(dir $@)
-	@echo "$(PLUGIN_OBJS)" | tr ' ' '\n' > $(BUILD_DIR)/objects.list
-	$(SILENT)$(AR) crs $@ @$(BUILD_DIR)/objects.list
-	@rm $(BUILD_DIR)/objects.list
+	@echo $(PLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)$(AR) s $@
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@mkdir -p $(dir $@)
-	@echo "$(MINIPLUGIN_OBJS)" | tr ' ' '\n' > $(BUILD_DIR)/objects.list
-	$(SILENT)$(AR) crs $@ @$(BUILD_DIR)/objects.list
-	@rm $(BUILD_DIR)/objects.list
+	@echo $(MINIPLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)$(AR) s $@
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
