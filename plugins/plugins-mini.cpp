@@ -293,7 +293,7 @@ static void initStatic__Aria()
 {
     Plugin* const p = new Plugin;
     pluginInstance__Aria = p;
-;
+
     const StaticPluginLoader spl(p, "AriaModules");
     if (spl.ok())
     {
