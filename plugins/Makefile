@@ -2112,13 +2112,18 @@ custom_per_file_names = -D${1}=${2}_${1}
 plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@echo $(PLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)for obj in $(PLUGIN_OBJS); do \
+		$(AR) r $@ $$obj; \
+	done
 	$(SILENT)$(AR) s $@
+
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@echo $(MINIPLUGIN_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)for obj in $(MINIPLUGIN_OBJS); do \
+		$(AR) r $@ $$obj; \
+	done
 	$(SILENT)$(AR) s $@
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
@@ -2914,7 +2919,7 @@ $(BUILD_DIR)/Venom/%.cpp.o: Venom/%.cpp
 	@echo "Compiling $<"
 	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
 		$(foreach m,$(VENOM_CUSTOM),$(call custom_module_names,$(m),Venom)) \
-		-DpluginInstance=pluginInstance__Venom 
+		-DpluginInstance=pluginInstance__Venom
 
 $(BUILD_DIR)/voxglitch/%.cpp.o: voxglitch/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

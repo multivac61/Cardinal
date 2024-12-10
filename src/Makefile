@@ -184,7 +184,9 @@ RACK_OBJS = $(RACK_FILES:%=$(BUILD_DIR)/%.o)
 rack$(TARGET_SUFFIX).a: $(RACK_OBJS)
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	@echo $(RACK_OBJS) | xargs -n 50 $(AR) r $@
+	$(SILENT)for obj in $(RACK_OBJS); do \
+		$(AR) r $@ $$obj; \
+	done
 	$(SILENT)$(AR) s $@
 
 ifneq ($(HEADLESS),true)
