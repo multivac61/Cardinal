@@ -2110,21 +2110,21 @@ custom_module_names = -D${1}=${2}${1} -Dmodel${1}=model${2}${1} -D${1}Widget=${2
 custom_per_file_names = -D${1}=${2}_${1}
 
 plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
+	set -x
 	@echo "Creating $@"
-	$(SILENT)rm -f $@
-	$(SILENT)for obj in $(PLUGIN_OBJS); do \
-		$(AR) r $@ $$obj; \
-	done
-	$(SILENT)$(AR) s $@
-
+	rm -f $@
+	printf '%s\n' $(PLUGIN_OBJS) > plugin_objs.list
+	$(AR) crs $@ @plugin_objs.list
+	rm -f plugin_objs.list
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
+	set -x
 	@echo "Creating $@"
-	$(SILENT)rm -f $@
-	$(SILENT)for obj in $(MINIPLUGIN_OBJS); do \
-		$(AR) r $@ $$obj; \
-	done
-	$(SILENT)$(AR) s $@
+	rm -f $@
+	printf '%s\n' $(MINIPLUGIN_OBJS) > miniplugin_objs.list
+	$(AR) crs $@ @miniplugin_objs.list
+	rm -f miniplugin_objs.list
+
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
