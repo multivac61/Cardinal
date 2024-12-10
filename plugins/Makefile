@@ -2115,18 +2115,21 @@ plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	rm -f $@
-	printf '%s\n' $(PLUGIN_OBJS) > plugin_objs.list
-	$(AR) crs $@ @plugin_objs.list
-	rm -f plugin_objs.list
+	pushd ../build-headless/plugins && \
+	printf '%s\n' $(notdir $(PLUGIN_OBJS)) > plugin_objs.list && \
+	$(AR) crs $(abspath $@) @plugin_objs.list && \
+	rm -f plugin_objs.list && \
+	popd
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
 	rm -f $@
-	printf '%s\n' $(MINIPLUGIN_OBJS) > miniplugin_objs.list
-	$(AR) crs $@ @miniplugin_objs.list
-	rm -f miniplugin_objs.list
-
+	pushd ../build-headless/plugins && \
+	printf '%s\n' $(notdir $(MINIPLUGIN_OBJS)) > miniplugin_objs.list && \
+	$(AR) crs $(abspath $@) @miniplugin_objs.list && \
+	rm -f miniplugin_objs.list && \
+	popd
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
