@@ -2112,12 +2112,18 @@ custom_per_file_names = -D${1}=${2}_${1}
 plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	$(SILENT)$(AR) crs $@ $^
+	@mkdir -p $(dir $@)
+	@echo "$(PLUGIN_OBJS)" | tr ' ' '\n' > $(BUILD_DIR)/objects.list
+	$(SILENT)$(AR) crs $@ @$(BUILD_DIR)/objects.list
+	@rm $(BUILD_DIR)/objects.list
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	@echo "Creating $@"
 	$(SILENT)rm -f $@
-	$(SILENT)$(AR) crs $@ $^
+	@mkdir -p $(dir $@)
+	@echo "$(MINIPLUGIN_OBJS)" | tr ' ' '\n' > $(BUILD_DIR)/objects.list
+	$(SILENT)$(AR) crs $@ @$(BUILD_DIR)/objects.list
+	@rm $(BUILD_DIR)/objects.list
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
