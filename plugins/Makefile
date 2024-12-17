@@ -2114,22 +2114,14 @@ custom_per_file_names = -D${1}=${2}_${1}
 plugins$(TARGET_SUFFIX).a: $(PLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
-	rm -f $@
-	pushd ../build-headless/plugins && \
-	printf '%s\n' $(notdir $(PLUGIN_OBJS)) > plugin_objs.list && \
-	$(AR) crs $(abspath $@) @plugin_objs.list && \
-	rm -f plugin_objs.list && \
-	popd
+	$(SILENT)rm -f $@
+	$(SILENT)printf "%s\n" $^ | xargs $(AR) crs $@
 
 plugins-mini$(TARGET_SUFFIX).a: $(MINIPLUGIN_OBJS)
 	set -x
 	@echo "Creating $@"
-	rm -f $@
-	pushd ../build-headless/plugins && \
-	printf '%s\n' $(notdir $(MINIPLUGIN_OBJS)) > miniplugin_objs.list && \
-	$(AR) crs $(abspath $@) @miniplugin_objs.list && \
-	rm -f miniplugin_objs.list && \
-	popd
+	$(SILENT)rm -f $@
+	$(SILENT)printf "%s\n" $^ | xargs $(AR) crs $@
 
 $(BUILD_DIR)/%.bin.c: % ../deps/res2c.py
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
