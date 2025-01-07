@@ -274,4 +274,4 @@
 	url = https://github.com/multivac61/SubmarineFree.git
 [submodule "plugins/Agave"]
 	path = plugins/Agave
-	url = https://github.com/jatinchowdhury18/Agave.git
+	url = https://github.com/multivac61/Agave.git
