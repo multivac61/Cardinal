@@ -22,9 +22,6 @@
 [submodule "plugins/BogaudioModules"]
 	path = plugins/BogaudioModules
 	url = https://github.com/bogaudio/BogaudioModules.git
-[submodule "plugins/Bidoo"]
-	path = plugins/Bidoo
-	url = https://github.com/CardinalModules/Bidoo.git
 [submodule "plugins/ESeries"]
 	path = plugins/ESeries
 	url = https://github.com/VCVRack/ESeries.git
@@ -275,3 +272,6 @@
 [submodule "plugins/Agave"]
 	path = plugins/Agave
 	url = https://github.com/multivac61/Agave.git
+[submodule "plugins/Bidoo"]
+	path = plugins/Bidoo
+	url = https://github.com/multivac61/Bidoo.git
