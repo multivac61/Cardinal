@@ -294,11 +294,20 @@ PLUGIN_FILES += Fundamental/src/dr_wav.c
 
 MINIPLUGIN_FILES += Fundamental/src/ADSR.cpp
 MINIPLUGIN_FILES += Fundamental/src/LFO.cpp
+MINIPLUGIN_FILES += Fundamental/src/CVMix.cpp
+MINIPLUGIN_FILES += Fundamental/src/Compare.cpp
+MINIPLUGIN_FILES += Fundamental/src/Gates.cpp
 MINIPLUGIN_FILES += Fundamental/src/Merge.cpp
 MINIPLUGIN_FILES += Fundamental/src/MidSide.cpp
 MINIPLUGIN_FILES += Fundamental/src/Noise.cpp
 MINIPLUGIN_FILES += Fundamental/src/Quantizer.cpp
 MINIPLUGIN_FILES += Fundamental/src/Random.cpp
+MINIPLUGIN_FILES += Fundamental/src/Mixer.cpp
+MINIPLUGIN_FILES += Fundamental/src/Mult.cpp
+MINIPLUGIN_FILES += Fundamental/src/Mutes.cpp
+MINIPLUGIN_FILES += Fundamental/src/Octave.cpp
+MINIPLUGIN_FILES += Fundamental/src/Process.cpp
+MINIPLUGIN_FILES += Fundamental/src/Rescale.cpp
 MINIPLUGIN_FILES += Fundamental/src/Scope.cpp
 MINIPLUGIN_FILES += Fundamental/src/Split.cpp
 MINIPLUGIN_FILES += Fundamental/src/Sum.cpp
@@ -379,6 +388,9 @@ AMALGAMATEDHARMONICS_CUSTOM += bogaudio
 PLUGIN_FILES += $(wildcard AnimatedCircuits/src/Folding/*.cpp)
 PLUGIN_FILES += $(wildcard AnimatedCircuits/src/LFold/*.cpp)
 
+MINIPLUGIN_FILES += $(wildcard AnimatedCircuits/src/Folding/*.cpp)
+MINIPLUGIN_FILES += $(wildcard AnimatedCircuits/src/LFold/*.cpp)
+
 # --------------------------------------------------------------
 # ArableInstruments
 
@@ -430,6 +442,9 @@ PLUGIN_FILES += AS/freeverb/revmodel.cpp
 # modules/types which are present in other plugins
 AS_CUSTOM = ADSR BpmDisplayWidget LabelDisplayWidget LedLight LowFrequencyOscillator SigDisplayWidget VCA WaveShaper YellowRedLight allpass comb revmodel
 AS_CUSTOM_PER_FILE = NumberDisplayWidget
+
+MINIPLUGIN_FILES += AS/src/AS.cpp
+MINIPLUGIN_FILES += AS/src/stereoVUmeter.cpp
 
 # --------------------------------------------------------------
 # AudibleInstruments
@@ -589,6 +604,12 @@ PLUGIN_FILES += $(filter-out Bidoo/src/dep/lodepng/pngdetail.cpp,$(wildcard Bido
 PLUGIN_FILES += $(filter-out Bidoo/src/dep/resampler/main.cpp,$(wildcard Bidoo/src/dep/resampler/*.cpp))
 PLUGIN_FILES += BidooDark/plugin.cpp
 
+# MINIPLUGIN_FILES += $(filter-out Bidoo/src/plugin.cpp Bidoo/src/ANTN.cpp,$(wildcard Bidoo/src/*.cpp))
+MINIPLUGIN_FILES += Bidoo/src/TIARE.cpp
+MINIPLUGIN_FILES += $(wildcard Bidoo/src/dep/*.cpp)
+MINIPLUGIN_FILES += $(wildcard Bidoo/src/dep/filters/*.cpp)
+MINIPLUGIN_FILES += BidooDark/plugin.cpp
+
 # modules/types which are present in other plugins
 BIDOO_CUSTOM = ChannelDisplay InstantiateExpanderItem LadderFilter PitchShifter $(DRWAV)
 BIDOO_CUSTOM_PER_FILE = channel channel filterType
@@ -610,27 +631,49 @@ PLUGIN_FILES += $(wildcard BogaudioModules/src/dsp/*.cpp)
 PLUGIN_FILES += $(wildcard BogaudioModules/src/dsp/filters/*.cpp)
 PLUGIN_FILES += BogaudioModules-helper/BogaudioModules-helper.cpp
 
+MINIPLUGIN_FILES += BogaudioModules-helper/BogaudioModules-helper.cpp
+
 MINIPLUGIN_FILES += BogaudioModules/src/AD.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/LFO.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/Mix4.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/Mix4x.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/Noise.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/VCA.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/VCO.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/VCF.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/EQ.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/EightOne.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/Follow.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/Offset.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/PolyCon8.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/Pressor.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/SampleHold.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/Slew.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/Switch.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/Switch18.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/Unison.cpp
-MINIPLUGIN_FILES += BogaudioModules/src/VCA.cpp
-MINIPLUGIN_FILES += BogaudioModules/src/VCF.cpp
-MINIPLUGIN_FILES += BogaudioModules/src/VCO.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/addressable_sequence.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/analyzer_base.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/dadsrh_core.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/disable_output_limit.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/follower_base.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/lfo_base.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/lpg_common.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/matrix_base.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/menu.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/mixer.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/mixer_expander.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/module.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/output_range.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/param_quantities.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/parametric_eq.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/poly_channels.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/rack_overrides.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/save_latch_to_patch.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/shaper_core.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/skins.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/slew_common.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/trigger_on_load.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/utils.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/vco_base.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/widgets.cpp
@@ -641,11 +684,13 @@ MINIPLUGIN_FILES += BogaudioModules/src/dsp/noise.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/oscillator.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/signal.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/table.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/equalizer.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/experiments.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/filter.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/multimode.cpp
 MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/resample.cpp
-MINIPLUGIN_FILES += BogaudioModules-helper/BogaudioModules-helper.cpp
+MINIPLUGIN_FILES += BogaudioModules/src/dsp/filters/utility.cpp
+
 
 # modules/types which are present in other plugins
 BOGAUDIO_CUSTOM = ADSR BlueNoiseGenerator LFO Noise VCA VCO VCF Mix4 Mult
@@ -692,6 +737,11 @@ PLUGIN_FILES += $(wildcard countmodula/src/*.cpp)
 PLUGIN_FILES += $(wildcard countmodula/src/components/*.cpp)
 PLUGIN_FILES += $(wildcard countmodula/src/modules/*.cpp)
 
+MINIPLUGIN_FILES += countmodula/src/modules/LightStrip.cpp
+MINIPLUGIN_FILES += countmodula/src/modules/PolyChances.cpp
+MINIPLUGIN_FILES += countmodula/src/CountModula.cpp
+
+
 # modules/types which are present in other plugins
 COUNTMODULA_CUSTOM = Comparator Mixer Fade BusRoute Arpeggiator Mult Stack SmallKnob
 
@@ -730,6 +780,17 @@ PLUGIN_FILES += dbRackModules/Gamma/src/fftpack++2.cpp
 
 RESOURCE_FILES += $(wildcard dbRackModules/images/*.png)
 RESOURCE_FILES += $(wildcard dbRackModules/presets)
+
+MINIPLUGIN_FILES += dbRackModules/src/OFS.cpp
+MINIPLUGIN_FILES += dbRackModules/src/dcb.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/arr.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/Domain.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/scl.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/DFT.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/FFT_fftpack.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/fftpack++1.cpp
+MINIPLUGIN_FILES += dbRackModules/Gamma/src/fftpack++2.cpp
+
 
 # --------------------------------------------------------------
 # DHE-Modules
@@ -821,6 +882,21 @@ PLUGIN_FILES += $(wildcard HetrickCV/src/DSP/Phasors/*.cpp)
 PLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/arr.cpp)
 PLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/Domain.cpp)
 PLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/scl.cpp)
+
+# MINIPLUGIN_FILES += $(filter-out HetrickCV/src/HetrickCV.cpp,$(wildcard HetrickCV/src/*.cpp))
+# MINIPLUGIN_FILES += $(wildcard HetrickCV/src/DSP/*.cpp)
+# MINIPLUGIN_FILES += $(wildcard HetrickCV/src/DSP/Phasors/*.cpp)
+# MINIPLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/arr.cpp)
+# MINIPLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/Domain.cpp)
+# MINIPLUGIN_FILES += $(wildcard HetrickCV/Gamma/src/scl.cpp)
+
+MINIPLUGIN_FILES += HetrickCV/src/HetrickCV.cpp
+MINIPLUGIN_FILES += HetrickCV/src/HetrickUtilities.cpp
+MINIPLUGIN_FILES += HetrickCV/src/Dust.cpp
+MINIPLUGIN_FILES += HetrickCV/src/MidSide.cpp
+MINIPLUGIN_FILES += HetrickCV/Gamma/src/arr.cpp
+MINIPLUGIN_FILES += HetrickCV/Gamma/src/Domain.cpp
+MINIPLUGIN_FILES += HetrickCV/Gamma/src/scl.cpp
 
 # modules/types which are present in other plugins
 HETRICKCV_CUSTOM = ASR BlankPanel FlipFlop MidSide MinMax PanelBaseWidget InverterWidget
@@ -932,6 +1008,11 @@ PLUGIN_FILES += $(wildcard MindMeldModular/src/PatchSet/*.cpp)
 PLUGIN_FILES += $(wildcard MindMeldModular/src/ShapeMaster/*.cpp)
 PLUGIN_FILES += $(wildcard MindMeldModular/src/Utilities/*.cpp)
 
+MINIPLUGIN_FILES += $(wildcard MindMeldModular/src/*.cpp)
+MINIPLUGIN_FILES += $(wildcard MindMeldModular/src/comp/*.cpp)
+MINIPLUGIN_FILES += $(wildcard MindMeldModular/src/PatchSet/*.cpp)
+MINIPLUGIN_FILES += $(wildcard MindMeldModular/src/MixMaster/*.cpp)
+
 # modules/types which are present in other plugins
 MINDMELD_CUSTOM = Trigger printNote
 
@@ -986,6 +1067,9 @@ MSM_CUSTOM = ADSR BlankPanel Delay LFO LowFrequencyOscillator Mult Noise OP VCA 
 # MUS-X
 
 PLUGIN_FILES += $(filter-out MUS-X/src/plugin.cpp,$(wildcard MUS-X/src/*.cpp))
+
+MINIPLUGIN_FILES += MUS-X/src/Filter.cpp
+MINIPLUGIN_FILES += MUS-X/src/OnePoleLP.cpp
 
 # --------------------------------------------------------------
 # myth-modules
@@ -1101,6 +1185,26 @@ PLUGIN_FILES += $(filter-out sonusmodular/src/sonusmodular.cpp,$(wildcard sonusm
 PLUGIN_FILES += $(filter-out Submarine/src/SubmarineFree.cpp,$(wildcard Submarine/src/*.cpp))
 PLUGIN_FILES += $(wildcard Submarine/src/shared/*.cpp)
 
+MINIPLUGIN_FILES += Submarine/src/TD2.cpp
+MINIPLUGIN_FILES += Submarine/src/TD4.cpp
+MINIPLUGIN_FILES += Submarine/src/TF1.cpp
+MINIPLUGIN_FILES += Submarine/src/TD3.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/DS.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/EventWidgets.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/ExtensionLight.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/LightButton.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/LightKnob.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/MouseTransformWidget.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/Port.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/ResizeHandle.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/Scheme.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/SizeableModuleWidget.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/SubLightSlider.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/SubSwitch.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/SubTooltip.cpp
+MINIPLUGIN_FILES += Submarine/src/shared/TextDisplay.cpp
+
+
 # --------------------------------------------------------------
 # Starling Via
 
@@ -1206,23 +1310,25 @@ SURGEXT_FLAGS += -DSURGE_RACK_SURGE_VERSION=Cardinal
 
 SURGEXT_FLAGS += -I$(abspath ../carla/source/modules)
 
-MINIPLUGIN_FILES += surgext/src/Delay.cpp
-MINIPLUGIN_FILES += surgext/src/DelayLineByFreq.cpp
-MINIPLUGIN_FILES += surgext/src/DelayLineByFreqExpanded.cpp
-MINIPLUGIN_FILES += surgext/src/EGxVCA.cpp
-MINIPLUGIN_FILES += surgext/src/FX.cpp
-MINIPLUGIN_FILES += surgext/src/LFO.cpp
-MINIPLUGIN_FILES += surgext/src/Mixer.cpp
-MINIPLUGIN_FILES += surgext/src/ModMatrix.cpp
-MINIPLUGIN_FILES += surgext/src/QuadAD.cpp
-MINIPLUGIN_FILES += surgext/src/QuadLFO.cpp
-MINIPLUGIN_FILES += surgext/src/VCO.cpp
-MINIPLUGIN_FILES += surgext/src/VCF.cpp
-MINIPLUGIN_FILES += surgext/src/Waveshaper.cpp
-MINIPLUGIN_FILES += surgext/src/XTModule.cpp
-MINIPLUGIN_FILES += surgext/src/XTModuleWidget.cpp
-MINIPLUGIN_FILES += surgext/src/XTStyle.cpp
+MINIPLUGIN_FILES += $(filter-out surgext/src/SurgeXT.cpp,$(wildcard surgext/src/*.cpp))
 MINIPLUGIN_FILES += surgext-helper/surgext-helper.cpp
+# MINIPLUGIN_FILES += surgext/src/Delay.cpp
+# MINIPLUGIN_FILES += surgext/src/DelayLineByFreq.cpp
+# MINIPLUGIN_FILES += surgext/src/DelayLineByFreqExpanded.cpp
+# MINIPLUGIN_FILES += surgext/src/EGxVCA.cpp
+# MINIPLUGIN_FILES += surgext/src/FX.cpp
+# MINIPLUGIN_FILES += surgext/src/LFO.cpp
+# MINIPLUGIN_FILES += surgext/src/Mixer.cpp
+# MINIPLUGIN_FILES += surgext/src/ModMatrix.cpp
+# MINIPLUGIN_FILES += surgext/src/QuadAD.cpp
+# MINIPLUGIN_FILES += surgext/src/QuadLFO.cpp
+# MINIPLUGIN_FILES += surgext/src/VCO.cpp
+# MINIPLUGIN_FILES += surgext/src/VCF.cpp
+# MINIPLUGIN_FILES += surgext/src/Waveshaper.cpp
+# MINIPLUGIN_FILES += surgext/src/XTModule.cpp
+# MINIPLUGIN_FILES += surgext/src/XTModuleWidget.cpp
+# MINIPLUGIN_FILES += surgext/src/XTStyle.cpp
+# MINIPLUGIN_FILES += surgext-helper/surgext-helper.cpp
 
 # --------------------------------------------------------------
 # unless_modules
@@ -1304,57 +1410,12 @@ PLUGIN_BINARIES += ValleyAudio/src/VOICE_6.bin
 PLUGIN_BINARIES += ValleyAudio/src/VOX_MACH.bin
 PLUGIN_BINARIES += ValleyAudio/src/XFADE.bin
 
-# MINIPLUGIN_FILES += ValleyAudio/src/PlainText.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/SteppedSlider.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/ValleyChoiceMenu.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/FreqLUT.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/Utilities.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/DSP/OnePoleFilters.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/DSP/OTAFilter.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/SIMD/QuadOsc.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/SIMD/VecLoopingADSR.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/SIMD/VecOnePoleFilters.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Common/SIMD/VecOTAFilter.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Dexter/Dexter.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Dexter/DexterRoutingMatrix.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Dexter/Osc4Core_SIMD.cpp
-# MINIPLUGIN_FILES += ValleyAudio/src/Interzone/Interzone.cpp
-
-# MINIPLUGIN_BINARIES += ValleyAudio/src/ADD_BANK1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/ADD_SAW.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/ADD_SINE.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/ADD_SQR.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/ALTOSAX.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/AM_HARM.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/BASIC.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/BITCRUSH1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/BITCRUSH2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/BI_PULSE.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/CELLO_1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/CELLO_2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/CHIP_1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/CHIP_2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/OBOE.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/OPAL.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/OVERTONE1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/OVERTONE2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/PIANO.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/PLUCK.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/PWM.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/SAW_GAP1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/SAW_GAP2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/SINE_HARM.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/SWEEPHARM.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/SYMMETRY.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/TEE_EKS.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/THEREMIN.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VIDEOGAME.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VIOLIN.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VOICE_1.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VOICE_2.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VOICE_3.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VOICE_4.bin
-# MINIPLUGIN_BINARIES += ValleyAudio/src/VOICE_5.bin
+MINIPLUGIN_FILES += ValleyAudio/src/Plateau/Dattorro.cpp
+MINIPLUGIN_FILES += ValleyAudio/src/Plateau/Plateau.cpp
+MINIPLUGIN_FILES += ValleyAudio/src/dsp/filters/OnePoleFilters.cpp
+MINIPLUGIN_FILES += ValleyAudio/src/dsp/modulation/LinearEnvelope.cpp
+MINIPLUGIN_FILES += ValleyAudio/src/gui/PlainText.cpp
+MINIPLUGIN_FILES += ValleyAudio/src/utilities/Utilities.cpp
 
 # modules/types which are present in other plugins
 VALLEYAUDIO_CUSTOM = $(DRWAV) Chord DigitalDisplay
@@ -1363,6 +1424,18 @@ VALLEYAUDIO_CUSTOM_PER_FILE = TempoKnob
 # --------------------------------------------------------------
 # Venom
 PLUGIN_FILES += $(filter-out Venom/src/plugin.cpp Venom/src/MousePad.cpp,$(wildcard Venom/src/*.cpp))
+
+MINIPLUGIN_FILES += Venom/src/VCAMix4.cpp
+MINIPLUGIN_FILES += Venom/src/ShapedVCA.cpp
+MINIPLUGIN_FILES += Venom/src/MixFade.cpp
+MINIPLUGIN_FILES += Venom/src/MixFade2.cpp
+MINIPLUGIN_FILES += Venom/src/MixMute.cpp
+MINIPLUGIN_FILES += Venom/src/MixOffset.cpp
+MINIPLUGIN_FILES += Venom/src/MixPan.cpp
+MINIPLUGIN_FILES += Venom/src/MixSend.cpp
+MINIPLUGIN_FILES += Venom/src/MixSolo.cpp
+MINIPLUGIN_FILES += Venom/src/plugin.cpp
+MINIPLUGIN_FILES += Venom/src/format.cpp
 
 VENOM_CUSTOM = Bypass Logic DigitalDisplay YellowRedLight
 
@@ -1609,8 +1682,8 @@ MINIRESOURCE_FILES += BogaudioModules/res/button_9px_1.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/DGate-dark.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/Edge-dark.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/EightFO-dark.svg
-# MINIRESOURCE_FILES += BogaudioModules/res/EightOne-dark.svg
-# MINIRESOURCE_FILES += BogaudioModules/res/EQ-dark.svg
+MINIRESOURCE_FILES += BogaudioModules/res/EightOne-dark.svg
+MINIRESOURCE_FILES += BogaudioModules/res/EQ-dark.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/EQS-dark.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/FFB-dark.svg
 # MINIRESOURCE_FILES += BogaudioModules/res/FlipFlop-dark.svg

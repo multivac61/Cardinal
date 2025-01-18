@@ -260,9 +260,6 @@
 [submodule "plugins/Venom"]
 	path = plugins/Venom
 	url = https://github.com/DaveBenham/VenomModules.git
-[submodule "plugins/countmodula"]
-	path = plugins/countmodula
-	url = https://github.com/countmodula/VCVRackPlugins.git
 [submodule "plugins/dbRackModules"]
 	path = plugins/dbRackModules
 	url = https://github.com/docb/dbRackModules.git
@@ -275,3 +272,6 @@
 [submodule "plugins/Bidoo"]
 	path = plugins/Bidoo
 	url = https://github.com/multivac61/Bidoo.git
+[submodule "plugins/countmodula"]
+	path = plugins/countmodula
+	url = https://github.com/multivac61/VCVRackPlugins.git
