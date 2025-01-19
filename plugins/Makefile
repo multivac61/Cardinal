@@ -2040,6 +2040,20 @@ MINIRESOURCE_FILES += surgext/res/xt/glyphs/lt_5.svg
 MINIRESOURCE_FILES += surgext/res/xt/glyphs/lt_6.svg
 MINIRESOURCE_FILES += surgext/res/xt/glyphs/lt_7.svg
 
+MINIRESOURCE_FILES = \
+	$(filter-out $(UNWANTED_FILES), \
+		$(wildcard */res/*.svg) \
+		$(wildcard */res/*/*.svg) \
+		$(wildcard */res/*/*/*.svg) \
+		$(wildcard */res/*/*/*/*.svg) \
+		$(wildcard */res/*/*/*/*/*.svg) \
+		$(wildcard */res/*.otf) \
+		$(wildcard */res/*/*.otf) \
+		$(wildcard */res/*/*/*.otf) \
+		$(wildcard */res/*.ttf) \
+		$(wildcard */res/*/*.ttf) \
+		$(wildcard */res/*/*/*.ttf))
+
 # MINIRESOURCE_FILES += ValleyAudio/res/DexterPanelDark.svg
 # MINIRESOURCE_FILES += ValleyAudio/res/InterzonePanelDark.svg
 # MINIRESOURCE_FILES += ValleyAudio/res/LightLEDButton80.svg
